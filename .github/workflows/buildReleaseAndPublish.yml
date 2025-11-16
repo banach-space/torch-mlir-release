@@ -54,13 +54,6 @@ jobs:
           mkdir dist
           cp build_tools/python_deploy/wheelhouse/torch*.whl dist/
 
-      - name: Upload python wheels
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
-        with:
-          if-no-files-found: error
-          name: snapshot-${{ matrix.package }}-${{ matrix.arch }}-${{ matrix.py_version }}-${{ env.tm_package_version }}
-          path: dist
-
       - name: Release python wheels
         uses: ncipollo/release-action@b7eabc95ff50cbeeedec83973935c8f306dfcd0b # v.1.20.0
         with:
